@@ -1,0 +1,24 @@
+{ 
+    "_id" : ObjectId("5dc98dd0111cd0076863d77e"), 
+    "create_date" : ISODate("2019-11-11T16:35:28.375+0000"), 
+    "update_date" : ISODate("2019-11-11T16:35:28.375+0000"), 
+    "name" : "CA", 
+    "note" : "Canada ", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5dc98e03111cd0076863d77f"), 
+    "create_date" : ISODate("2019-11-11T16:36:19.210+0000"), 
+    "update_date" : ISODate("2019-11-11T16:36:19.210+0000"), 
+    "name" : "VI", 
+    "note" : "VietNam", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5dc98e10111cd0076863d780"), 
+    "create_date" : ISODate("2019-11-11T16:36:32.851+0000"), 
+    "update_date" : ISODate("2019-11-11T16:36:32.851+0000"), 
+    "name" : "Eng", 
+    "note" : "English", 
+    "__v" : NumberInt(0)
+}

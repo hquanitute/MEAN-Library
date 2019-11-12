@@ -1,0 +1,10 @@
+{ 
+    "_id" : ObjectId("5dbbca9bc8156115288220d0"), 
+    "name" : "Sach lap trinh", 
+    "total_book" : NumberInt(0), 
+    "rank" : NumberInt(1), 
+    "status" : "true", 
+    "create_date" : ISODate("2019-11-01T06:03:07.388+0000"), 
+    "update_date" : ISODate("2019-11-01T06:03:07.388+0000"), 
+    "__v" : NumberInt(0)
+}

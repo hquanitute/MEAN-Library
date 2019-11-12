@@ -1,0 +1,16 @@
+{ 
+    "_id" : ObjectId("5dc98e3a111cd0076863d781"), 
+    "create_date" : ISODate("2019-11-11T16:37:14.759+0000"), 
+    "update_date" : ISODate("2019-11-11T16:37:14.759+0000"), 
+    "name" : "KD", 
+    "note" : "Kim Đòng", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5dc98e4c111cd0076863d782"), 
+    "create_date" : ISODate("2019-11-11T16:37:32.904+0000"), 
+    "update_date" : ISODate("2019-11-11T16:37:32.904+0000"), 
+    "name" : "BGD", 
+    "note" : "Bộ giáo dục", 
+    "__v" : NumberInt(0)
+}

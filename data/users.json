@@ -1,0 +1,6 @@
+{ 
+    "_id" : ObjectId("5d9ee86b4eb7e4233099e061"), 
+    "username" : "Quan", 
+    "password" : "$2a$10$j1C7LjarXVaLnX1Q76pOiuiPS2HZQVqTu/HaJAfJuR90AEY6ruc1e", 
+    "__v" : NumberInt(0)
+}

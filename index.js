@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
 // const database = require('./config/database');
 // const UsersRoute = require('./app/routes/usersRoute');
-const ChimRoute = require('./app/routers/bookRouter');
+const mainRouter = require('./app/routers/mainRouter');
 
 // Connect to database
 let count = 0;
@@ -33,8 +33,7 @@ app.use(morgan('dev'));
 // Route api
 
 let apiRouter = express.Router(); 
-
-apiRouter.use("/books",ChimRoute);
+apiRouter.use('/api',mainRouter);
 // require('./app/middlewares/setHeaders')(app);
 // require('./app/routes/loginRoute')(apiRouter);
 // UsersRoute.createUserRoute(apiRouter);
@@ -45,7 +44,7 @@ apiRouter.use("/books",ChimRoute);
 // require('./app/routes/decksRoute')(apiRouter);
 // require('./app/routes/cardsRoute')(apiRouter);
 
-app.use('/api', apiRouter);
+app.use('/', apiRouter);
 
 app.listen(port);
 console.log('App listening on port ' + port);

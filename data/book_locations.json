@@ -1,0 +1,6 @@
+{ 
+    "_id" : ObjectId("5dbbc4e8317e6944d89f7db4"), 
+    "name" : "Sach tham khao", 
+    "description" : "lau 1 ben phai", 
+    "__v" : NumberInt(0)
+}

@@ -1,0 +1,28 @@
+{ 
+    "_id" : ObjectId("5dc98fd11319f31c6496359d"), 
+    "lsCategories" : [
+        ObjectId("5dbbca9bc8156115288220d0")
+    ], 
+    "create_date" : ISODate("2019-11-11T16:44:01.105+0000"), 
+    "update_date" : ISODate("2019-11-11T16:44:01.105+0000"), 
+    "publisher" : ObjectId("5db51074e6d7f32b3858158b"), 
+    "language" : ObjectId("5db5102ee6d7f32b38581588"), 
+    "book_location" : ObjectId("5dbbc4e8317e6944d89f7db4"), 
+    "author" : ObjectId("6359fa14e6d7f32b38581584"), 
+    "book" : ObjectId("5dbbbc3ee4803320207796b8"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5dc990411319f31c6496359e"), 
+    "lsCategories" : [
+        ObjectId("5dbbca9bc8156115288220d0")
+    ], 
+    "create_date" : ISODate("2019-11-11T16:45:53.399+0000"), 
+    "update_date" : ISODate("2019-11-11T16:45:53.399+0000"), 
+    "publisher" : ObjectId("5dc98e4c111cd0076863d782"), 
+    "language" : ObjectId("5dc98dd0111cd0076863d77e"), 
+    "book_location" : ObjectId("5dbbc4e8317e6944d89f7db4"), 
+    "author" : ObjectId("5dc98eae42a5af0964f176e3"), 
+    "book" : ObjectId("5dbbbc3ee4803320207796b8"), 
+    "__v" : NumberInt(0)
+}

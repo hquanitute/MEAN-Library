@@ -1,0 +1,9 @@
+{ 
+    "_id" : ObjectId("5dbbbc3ee4803320207796b8"), 
+    "reviews" : [
+
+    ], 
+    "name" : "Quan hoc tieng anh", 
+    "short_description" : "day la cuon sasch", 
+    "__v" : NumberInt(0)
+}

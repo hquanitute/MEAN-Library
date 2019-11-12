@@ -1,0 +1,28 @@
+{ 
+    "_id" : ObjectId("5dc98eae42a5af0964f176e3"), 
+    "create_date" : ISODate("2019-11-11T16:39:10.502+0000"), 
+    "update_date" : ISODate("2019-11-11T16:39:10.502+0000"), 
+    "name" : "Quan", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5dc98eb942a5af0964f176e4"), 
+    "create_date" : ISODate("2019-11-11T16:39:21.337+0000"), 
+    "update_date" : ISODate("2019-11-11T16:39:21.337+0000"), 
+    "name" : "Dat", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5dc98ec042a5af0964f176e5"), 
+    "create_date" : ISODate("2019-11-11T16:39:28.049+0000"), 
+    "update_date" : ISODate("2019-11-11T16:39:28.049+0000"), 
+    "name" : "Duong Duong", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5dc98ec942a5af0964f176e6"), 
+    "create_date" : ISODate("2019-11-11T16:39:37.475+0000"), 
+    "update_date" : ISODate("2019-11-11T16:39:37.475+0000"), 
+    "name" : "Phan Van Tri", 
+    "__v" : NumberInt(0)
+}

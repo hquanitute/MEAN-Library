@@ -5,6 +5,7 @@ const bookDetailRouter = require('./book_detailRouter')
 const languageRouter = require('./languageRouter');
 const publisherRouter = require('./publisherRouter');
 const authorRouter = require('./authorRouter');
+const borrowingCardRouter = require('./borrowingRouter');
 
 const express = require('express');
 var router = express.Router();
@@ -15,4 +16,5 @@ router.use('/book_details',bookDetailRouter);
 router.use('/languages',languageRouter);
 router.use('/publishers',publisherRouter);
 router.use('/authors',authorRouter);
+router.use('/borrowings',borrowingCardRouter);
 module.exports = router;

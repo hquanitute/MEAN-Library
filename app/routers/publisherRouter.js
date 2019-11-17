@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
         if (error) {
             return res.send(error);
         }
-        res.json(publisher);
+        res.json({"content":publisher});
     });
 }).get('/:publisher_id', (req, res) => {
     Publisher.findById(req.params.publisher_id, (err, publisher) => {

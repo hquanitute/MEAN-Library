@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
         if (error) {
             return res.send(error);
         }
-        res.json(categorys);
+        res.json({"content":categorys});
     });
 }).get('/:category_id', (req, res) => {
     Category.findById(req.params.category_id, (err, category) => {

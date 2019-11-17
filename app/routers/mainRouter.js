@@ -12,7 +12,7 @@ var router = express.Router();
 router.use('/books',bookRouter);
 router.use('/booklocations',bookLocationRouter);
 router.use('/categories',categoryRouter);
-router.use('/book_details',bookDetailRouter);
+router.use('/bookDetails',bookDetailRouter);
 router.use('/languages',languageRouter);
 router.use('/publishers',publisherRouter);
 router.use('/authors',authorRouter);

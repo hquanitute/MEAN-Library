@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
         if (error) {
             return res.send(error);
         }
-        res.json(language);
+        res.json({"content":language});
     });
 }).get('/:language_id', (req, res) => {
     Language.findById(req.params.language_id, (err, language) => {

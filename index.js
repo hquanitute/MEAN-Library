@@ -3,10 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 // const database = require('./config/database');
 // const UsersRoute = require('./app/routes/usersRoute');
 const mainRouter = require('./app/routers/mainRouter');
+var cors = require('cors')
+
+app.use(cors()) // Use this after the variable declaration
 
 // Connect to database
 let count = 0;

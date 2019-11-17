@@ -23,7 +23,7 @@ router.post("/",(req, res) => {
     if (error) {
       return res.send(error);
     }
-    res.json(booklocations);
+    res.json({"content":booklocations});
   });
 }).get('/:bookLocation_id',(req,res)=>{
     BookLocation.findById(req.params.bookLocation_id,(err,bookLocation)=>{

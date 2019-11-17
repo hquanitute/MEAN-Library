@@ -1,6 +1,8 @@
 const express = require('express');
 const Book_detail = require('./../models/book_detail');
+const Book =require('./../models/book');
 var router = express.Router();
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 router.post("/", (req, res) => {
     const date = new Date();
@@ -30,7 +32,7 @@ router.post("/", (req, res) => {
         if (error) {
             return res.send(error);
         }
-        res.json(book_details);
+        res.json({"content":book_details});
     });
 }).get('/:book_detail_id', (req, res) => {
     Book_detail.findById(req.params.book_detail_id, (err, book_detail) => {
@@ -83,6 +85,15 @@ router.post("/", (req, res) => {
             message: "Da xoa thanh cong book_detail"
         })
     });
+}).get("/book/:id",(req,res) =>{
+    Book_detail.findOne({book: req.params.id},(err,book_detail1) =>{
+        if (err) {
+            return res.send(err);
+        }
+        res.json(
+            book_detail1
+        )
+    })
 });
 
 module.exports = router;

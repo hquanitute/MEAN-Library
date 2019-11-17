@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
         if (error) {
             return res.send(error);
         }
-        res.json(author);
+        res.json({"content":author});
     });
 }).get('/:author_id', (req, res) => {
     Author.findById(req.params.author_id, (err, author) => {

@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
         if (error) {
             return res.send(error);
         }
-        res.json(borrowing_cards);
+        res.json({"content":borrowing_cards});
     });
 }).get('/:borrowing_card_id', (req, res) => {
     Borrowing_card.findById(req.params.borrowing_card_id, (err, borrowing_card) => {

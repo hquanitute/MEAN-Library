@@ -16,7 +16,7 @@ let count = 0;
 mongoose.Promise = global.Promise;
 
 function connectDatabase() {
-  let mongoString ="mongodb+srv://supershay:quan123456@cluster0-6y3y0.mongodb.net/admin?replicaSet=Cluster0-shard-0&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1&3t.uriVersion=3&3t.connection.name=Cluster0-shard-0&3t.databases=admin,test";
+  let mongoString ="mongodb+srv://supershay:quan123456@cluster0-6y3y0.mongodb.net/library?replicaSet=Cluster0-shard-0&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1&3t.uriVersion=3&3t.connection.name=Cluster0-shard-0&3t.databases=admin,test";
   // let mongoString ="mongodb://localhost:27017/library";
 
   mongoose.connect(mongoString

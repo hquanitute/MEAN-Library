@@ -1,7 +1,7 @@
 const express = require('express');
 const Book = require('./../models/book');
 var router = express.Router();
-
+const jwtCheck = require('./../middlewares/jwtCheck');
 router.post("/",(req, res) => {
   let book = new Book();
   book.name = req.body.name;
@@ -18,7 +18,7 @@ router.post("/",(req, res) => {
       message: "Them sach thanh cong"
     });
   });
-}).get("/",function (req, res) {
+}).get("/",jwtCheck(2), function (req, res) {
   Book.find(function (error, books) {
     if (error) {
       return res.send(error);

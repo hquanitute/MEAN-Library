@@ -39,7 +39,7 @@ router.get('/logout', (req, res) => {
 })
 
 router.get('/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] }));
+  passport.authenticate('google', { scope: ['profile', 'email','https://www.googleapis.com/auth/plus.login'] }));
 
 // router.get('/google/callback',
 //   passport.authenticate('google'),

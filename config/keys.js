@@ -1,7 +1,7 @@
 module.exports = {
     google:{
-        clientID:'965996379876-sot61p2rkp158euu4l1etpptqqr1f2os.apps.googleusercontent.com',
-        clientSecret:'nn6CRhICG4-ZqJZ2qWTvZDM0',
+        clientID:'965996379876-pu8nil49feigg1aidurakp05og92v4sk.apps.googleusercontent.com',
+        clientSecret:'p-6cmRWxK-lfO7UgoXHoEG38',
         // callback_url:'http://localhost:3000/auth/google/callback'
         callback_url:'https://restapilibrary.herokuapp.com/auth/google/callback'
     },

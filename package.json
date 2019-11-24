@@ -23,6 +23,7 @@
     "node-pre-gyp": "^0.14.0",
     "nodemon": "^1.19.2",
     "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0"
   }
 }

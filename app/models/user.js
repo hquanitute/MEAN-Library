@@ -5,6 +5,9 @@ const userSchema = new Schema({
     googleId:{
         type: String
     },
+    facebookId:{
+        type: String
+    },
     username:{
         type: String
     },

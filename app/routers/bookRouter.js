@@ -18,7 +18,7 @@ router.post("/",(req, res) => {
       message: "Them sach thanh cong"
     });
   });
-}).get("/",jwtCheck(2), function (req, res) {
+}).get("/",jwtCheck(1), function (req, res) {
   Book.find(function (error, books) {
     if (error) {
       return res.send(error);

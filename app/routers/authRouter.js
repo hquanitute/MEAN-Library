@@ -19,12 +19,12 @@ router.post('/registry', (req, res) => {
 router.post('/login', (req, res) => {
   console.log(req.body.username);
   console.log(req.body.password);
-  User.findOne({ username: req.body.username }, function (err, userInfo) {
+  User.findOne({info:{ username: req.body.username }}, function (err, userInfo) {
     if (err) {
       res.json({ status: "err", message: "Error" })
     } else {
       if (bcrypt.compareSync(req.body.password, userInfo.password)) {
-        const token = jwt.sign({ id: userInfo._id, role: userInfo.role }, req.app.get('secretKey'), { expiresIn: '1h' });
+        const token = jwt.sign({ id: userInfo._id, role: userInfo.role }, req.app.get('secretKey'), { expiresIn: 60 });
         res.json({ status: "success", message: "user found!!!", data: { user: userInfo, token: token } });
       } else {
         res.json({ status: "error", message: "Invalid email/password!!!", data: null });
@@ -32,39 +32,36 @@ router.post('/login', (req, res) => {
     }
   })
 });
-
 router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 })
 
 router.get('/google',
-  passport.authenticate('google', { scope: ['profile', 'email','https://www.googleapis.com/auth/plus.login'] }));
-
-// router.get('/google/callback',
-//   passport.authenticate('google'),
-//   function (accessToken, refreshToken, profile, done) {
-//     User.findOne({ googleId: profile.id }, function (err, user) {
-//       if (user) {
-//         const token = jwt.sign({ id: user._id, role: user.role }, req.app.get('secretKey'), { expiresIn: '1h' });
-//         console.log(token);
-//         return done(null, { status: "success", message: "user found!!!", data: { user: user, token: token } });
-//         // return res.json({ status: "success", message: "user found!!!", data: { user: user, token: token } });
-//       }
-//       return done(null, false);
-//     })
-//   });
+  passport.authenticate('google', { scope: ['profile', 'email', 'https://www.googleapis.com/auth/plus.login'] }));
 
 router.get('/google/callback', function (req, res, next) {
-
   passport.authenticate('google', function (err, user, info) {
     if (user != null) {
-      const token = jwt.sign({ info:user }, req.app.get('secretKey'), { expiresIn: '1h' });
-       res.redirect("http://localhost:3000?token=" + token);
+      const token = jwt.sign({info:user} , req.app.get('secretKey'), { expiresIn: 60 });
+      res.redirect("http://localhost:3000?token=" + token);
     }
 
   })(req, res, next);
 });
 
+router.get('/facebook',
+  passport.authenticate('facebook', { scope: ['user_friends', 'email'] }));
+
+router.get('/facebook/callback', function (req, res, next) {
+  passport.authenticate('facebook', function (err, user, info) {
+    if (user != null) {
+      console.log("xxx"+user);
+      const token = jwt.sign({info:user}, req.app.get('secretKey'), { expiresIn: 60 });
+      res.redirect("http://localhost:3000?token=" + token);
+    }
+
+  })(req, res, next);
+});
 
 module.exports = router;

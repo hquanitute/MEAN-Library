@@ -6,7 +6,7 @@ const penalizeSchema = new Schema({
         type: String
     },
     user_id:{
-        type: String
+        type: mongoose.Schema.Types.ObjectId, ref: 'users'
     },
     editor_id:{
         type: String
@@ -26,7 +26,7 @@ const penalizeSchema = new Schema({
 
 });
 
-publisherSchema.pre('save', function(next){
+penalizeSchema.pre('save', function(next){
     return next();
 });
 

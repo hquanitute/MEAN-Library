@@ -6,6 +6,11 @@ router.post("/",(req, res) => {
   let book = new Book();
   book.name = req.body.name;
   book.short_description = req.body.short_description;
+  book.cover_price = req.body.cover_price;
+  book.thumbnail = req.body.thumbnail;
+  book.number_page = req.body.number_page;
+  book.amount_book = req.body.amount_book;
+  
   book.save((err) => {
     if (err) {
       return res.json({

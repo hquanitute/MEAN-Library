@@ -5,7 +5,6 @@ var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId; 
 
 router.post("/", (req, res) => {
-    const date = new Date();
     let book_detail = new Book_detail();
     book_detail.lsCategories = req.body.lsCategories;
     book_detail.publisher = req.body.publisher;
@@ -13,13 +12,11 @@ router.post("/", (req, res) => {
     book_detail.book_location = req.body.book_location;
     book_detail.author = req.body.author;
     book_detail.book = req.body.book;
-    book_detail.create_date = date;
-    book_detail.update_date = date;
     book_detail.save((err) => {
         if (err) {
             return res.json({
                 success: false,
-                message: "Khong them book_detail duoc"
+                message: err
             });
         }
         return res.json({

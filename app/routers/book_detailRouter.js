@@ -25,18 +25,25 @@ router.post("/", (req, res) => {
         });
     });
 }).get("/", function (req, res) {
-    Book_detail.find(function (error, book_details) {
-        if (error) {
-            return res.send(error);
+    Book_detail.find()
+    .populate('publisher')
+    .populate('language')
+    .populate('book_location')
+    .populate('author')
+    .populate('book')
+    .exec((err,book_details)=>{
+        if (err) {
+            console.log(err)
         }
-        res.json({"content":book_details});
-    });
+        return res.json({"content":book_details});
+    });;
 }).get('/:book_detail_id', (req, res) => {
     Book_detail.findById(req.params.book_detail_id, (err, book_detail) => {
         if (err) {
             return res.send(err);
+
         }
-        res.json(book_detail);
+        return res.json(book_detail);
     });
 }).put('/:book_detail_id', (req, res) => {
     Book_detail.findById((req.params.book_detail_id), (err, book_detail) => {
@@ -85,6 +92,8 @@ router.post("/", (req, res) => {
 }).get("/book/:id",(req,res) =>{
     Book_detail.findOne({book: req.params.id},(err,book_detail1) =>{
         if (err) {
+            res.statusCode = 404;
+            res.setHeader('Content-Type', 'text/plain');
             return res.send(err);
         }
         res.json(

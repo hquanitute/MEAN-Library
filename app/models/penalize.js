@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const User = require('./user')
+const Book= require('./book')
 const penalizeSchema = new Schema({
+    book:{
+        type: mongoose.Schema.Types.ObjectId, ref: Book
+    },
     reason:{
         type: String
     },
     user_id:{
-        type: mongoose.Schema.Types.ObjectId, ref: 'users'
+        type: mongoose.Schema.Types.ObjectId, ref: User
     },
     editor_id:{
         type: String

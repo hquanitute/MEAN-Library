@@ -24,5 +24,5 @@ router.use('/borrowings',borrowingCardRouter);
 router.use('/penalize',penalizeRouter);
 router.use('/users',userRouter);
 router.use('/profiles',profileRouter);
-router.use('/resetpassword',resetpassword);
+router.use('/emailservice',resetpassword);
 module.exports = router;

@@ -1,5 +1,7 @@
 const express = require('express');
 const Book = require('./../models/book');
+const Book_detail = require('./../models/book_detail');
+
 var router = express.Router();
 const jwtCheck = require('./../middlewares/jwtCheck');
 router.post("/",(req, res) => {
@@ -67,6 +69,19 @@ router.post("/",(req, res) => {
       message:"Da xoa thanh cong sach"
     })
   });
+}).get("/category/:id",(req,res) =>{
+  Book_detail.find({lsCategories: req.params.id},(err,book_detail) =>{
+      if (err) {
+          res.statusCode = 404;
+          res.setHeader('Content-Type', 'text/plain');
+          return res.send(err);
+      }
+      return book_detail;
+  }).then(data=>{
+    let listID = data.map(x=>x.book);
+    Book.find({"_id":{$in:listID}}).then(x=>res.json(x))
+    // console.log(listID);
+  })
 });
 
 module.exports = router;

@@ -90,7 +90,7 @@ router.post("/", (req, res) => {
         })
     });
 }).get("/book/:id",(req,res) =>{
-    Book_detail.findById(req.params.id)
+    Book_detail.find({book:req.params.id})
     .populate('publisher')
     .populate('language')
     .populate('book_location')

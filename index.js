@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 app.set('view engine', 'ejs');
 app.set('secretKey', 'nodeRestApi');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 // const database = require('./config/database');
 // const UsersRoute = require('./app/routes/usersRoute');
 const mainRouter = require('./app/routers/mainRouter');

@@ -3,43 +3,55 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
     name:{
-        type: String
+        type: String,
+        required: true
     },
     isbn:{
-        type: String
+        type: String,
+        default:"book"+Math.floor(Date.now() / 1000).toString()
     },
     short_description:{
-        type: String
+        type: String,
+        default: "This book have not set description"
     },
     long_description:{
-        type:String
+        type:String,
+        default: "This book have not set more description"
     },
     cover_price:{
-        type: Number
+        type: Number,
+        default:0
     },
     click_view:{
-        type: Number
+        type: Number,
+        default:0
     },
     thumbnail:{
-        type:String
+        type:String,
+        default:"http://www.mydaymyplan.com/images/no-image-large.png"
     },
     number_page:{
         type:Number
     },
     page_size:{
-        type:String
+        type:String,
+        default:"16x9"
     },
     reprint:{
-        type:Number
+        type:Number,
+        default:0
     },
     released_time:{
-        type:Number
+        type:Number,
+        default:1
     },
     status:{
-        type:String
+        type:String,
+        default: "ACTIVE"
     },
     releaseDate:{
-        type: Date
+        type: Date,
+        default: Date.now()
     },
     amount_book:{
         type:Number
@@ -48,10 +60,12 @@ const bookSchema = new Schema({
         type:Array
     },
     create_date:{
-        type: Date
+        type: Date,
+        default: Date.now()
     },
     update_date:{
-        type: Date
+        type: Date,
+        default: Date.now()
     }
 
 });

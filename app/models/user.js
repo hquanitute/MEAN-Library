@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+    avater:{
+        type:String,
+        default:"http://www.mydaymyplan.com/images/no-image-large.png"
+    },
     googleId:{
         type: String
     },
@@ -20,7 +24,7 @@ const userSchema = new Schema({
     },
     status:{
         type: String,
-        default:"Active"
+        default:"UnActive"
     },
     gender:{
         type: String,

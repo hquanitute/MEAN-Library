@@ -1,24 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Category = require('./category');
-const Publisher = require('./publisher');
-const Language = require('./language');
-const BookLocation = require('./book_location');
-const Author = require('./author');
 const Book = require('./book');
+const User = require('./user')
 
-const categorySchema = require('./category');
 
 const borrowing_detailSchema = new Schema({
-    book_id:[{type: mongoose.Schema.Types.ObjectId, ref: 'books'},],
-    user_id:{type: mongoose.Schema.Types.ObjectId, ref: 'users'},
+    book_id:[{type: mongoose.Schema.Types.ObjectId, ref: Book},],
+    user_id:{type: mongoose.Schema.Types.ObjectId, ref: User},
     type:{type: String, default:"waiting"},
     status:{type: String},
     borrow_date:{
         type:Date,
         default : Date.now
     },
-    editor_id:{type: mongoose.Schema.Types.ObjectId, ref: 'users'},
+    editor_id:{type: mongoose.Schema.Types.ObjectId, ref: User},
     create_date:{
         type:Date,
         default : Date.now

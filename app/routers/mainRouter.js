@@ -9,6 +9,7 @@ const borrowingCardRouter = require('./borrowingRouter');
 const penalizeRouter = require('./penalizeRouter');
 const userRouter = require('./userRouter');
 const profileRouter = require('./profileRouter');
+const resetpassword = require('./resetpassword');
 
 const express = require('express');
 var router = express.Router();
@@ -23,4 +24,5 @@ router.use('/borrowings',borrowingCardRouter);
 router.use('/penalize',penalizeRouter);
 router.use('/users',userRouter);
 router.use('/profiles',profileRouter);
+router.use('/emailservice',resetpassword);
 module.exports = router;

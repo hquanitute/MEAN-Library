@@ -10,12 +10,12 @@ const Book = require('./book');
 const categorySchema = require('./category');
 
 const book_detailSchema = new Schema({
-    lsCategories:[{type: mongoose.Schema.Types.ObjectId, ref: 'categories'},],
-    publisher:{type: mongoose.Schema.Types.ObjectId, ref: 'publishers'},
-    language:{type: mongoose.Schema.Types.ObjectId, ref: 'languages'},
-    book_location:{type: mongoose.Schema.Types.ObjectId, ref: 'book_locations'},
-    author:{type: mongoose.Schema.Types.ObjectId, ref: 'authors'},
-    book:{type: mongoose.Schema.Types.ObjectId, ref: 'books'},
+    lsCategories:[{type: mongoose.Schema.Types.ObjectId, ref: Category},],
+    publisher:{type: mongoose.Schema.Types.ObjectId, ref: Publisher},
+    language:{type: mongoose.Schema.Types.ObjectId, ref: Language},
+    book_location:{type: mongoose.Schema.Types.ObjectId, ref: BookLocation},
+    author:{type: mongoose.Schema.Types.ObjectId, ref: Author},
+    book:{type: mongoose.Schema.Types.ObjectId, ref: Book},
     create_date:{
         type:Date,
         default : Date.now

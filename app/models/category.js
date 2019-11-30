@@ -6,19 +6,23 @@ const categorySchema = new Schema({
         type: String
     },
     total_book:{
-        type: Number
+        type: Number,
+        default:0
     },
     rank:{
-        type: Number
+        type: Number,
+        default:0
     },
     status:{
         type:String
     },
     create_date:{
-        type: Date
+        type: Date,
+        default: Date.now
     },
     update_date:{
-        type: Date
+        type: Date,
+        default: Date.now
     }
 
 });

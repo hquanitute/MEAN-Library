@@ -36,7 +36,7 @@ router.post("/", (req, res) => {
             console.log(err)
         }
         return res.json({"content":book_details});
-    });;
+    });
 }).get('/:book_detail_id', (req, res) => {
     Book_detail.findById(req.params.book_detail_id, (err, book_detail) => {
         if (err) {
@@ -90,16 +90,18 @@ router.post("/", (req, res) => {
         })
     });
 }).get("/book/:id",(req,res) =>{
-    Book_detail.findOne({book: req.params.id},(err,book_detail1) =>{
+    Book_detail.findById(req.params.id)
+    .populate('publisher')
+    .populate('language')
+    .populate('book_location')
+    .populate('author')
+    .populate('book')
+    .exec((err,book_details)=>{
         if (err) {
-            res.statusCode = 404;
-            res.setHeader('Content-Type', 'text/plain');
-            return res.send(err);
+            console.log(err)
         }
-        res.json(
-            book_detail1
-        )
-    })
+        return res.json({"content":book_details});
+    });
 });
 
 module.exports = router;

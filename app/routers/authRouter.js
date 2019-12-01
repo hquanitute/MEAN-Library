@@ -19,15 +19,19 @@ router.post('/registry', (req, res) => {
 router.post('/login', (req, res) => {
   console.log(req.body.username);
   console.log(req.body.password);
-  User.findOne({info:{ username: req.body.username }}, function (err, userInfo) {
+  User.findOne({ username: req.body.username }, function (err, userInfo) {
     if (err) {
       res.json({ status: "err", message: "Error" })
     } else {
-      if (bcrypt.compareSync(req.body.password, userInfo.password)) {
-        const token = jwt.sign({ id: userInfo._id, role: userInfo.role }, req.app.get('secretKey'), { expiresIn: 24*60*60 });
-        res.json({ status: "success", message: "user found!!!", data: { user: userInfo, token: token } });
-      } else {
-        res.json({ status: "error", message: "Invalid email/password!!!", data: null });
+      if(userInfo){
+        if (bcrypt.compareSync(req.body.password, userInfo.password)) {
+          const token = jwt.sign({ id: userInfo._id, role: userInfo.role }, req.app.get('secretKey'), { expiresIn: 24*60*60 });
+          res.json({ status: "success", message: "user found!!!", data: { user: userInfo, token: token } });
+        } else {
+          res.json({ status: "error", message: "Invalid email/password!!!", data: null });
+        }
+      }else{
+        res.json({status:"Fail",message:"User not found"})
       }
     }
   })

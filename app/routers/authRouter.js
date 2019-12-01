@@ -24,7 +24,7 @@ router.post('/login', (req, res) => {
       res.json({ status: "err", message: "Error" })
     } else {
       if (bcrypt.compareSync(req.body.password, userInfo.password)) {
-        const token = jwt.sign({ id: userInfo._id, role: userInfo.role }, req.app.get('secretKey'), { expiresIn: 60 });
+        const token = jwt.sign({ id: userInfo._id, role: userInfo.role }, req.app.get('secretKey'), { expiresIn: 24*60*60 });
         res.json({ status: "success", message: "user found!!!", data: { user: userInfo, token: token } });
       } else {
         res.json({ status: "error", message: "Invalid email/password!!!", data: null });
@@ -43,7 +43,7 @@ router.get('/google',
 router.get('/google/callback', function (req, res, next) {
   passport.authenticate('google', function (err, user, info) {
     if (user != null) {
-      const token = jwt.sign({info:user} , req.app.get('secretKey'), { expiresIn: 60 });
+      const token = jwt.sign({info:user} , req.app.get('secretKey'), { expiresIn: 24*60*60 });
       res.redirect("http://localhost:3000?token=" + token);
     }
 
@@ -57,7 +57,7 @@ router.get('/facebook/callback', function (req, res, next) {
   passport.authenticate('facebook', function (err, user, info) {
     if (user != null) {
       console.log("xxx"+user);
-      const token = jwt.sign({info:user}, req.app.get('secretKey'), { expiresIn: 60 });
+      const token = jwt.sign({info:user}, req.app.get('secretKey'), { expiresIn: 24*60*60 });
       res.redirect("http://localhost:3000?token=" + token);
     }
 

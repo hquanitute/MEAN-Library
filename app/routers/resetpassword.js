@@ -17,7 +17,7 @@ router.post("/reset", (req, res) => {
       res.json({ message: err })
     }
     if (user) {
-      const token = jwt.sign({ id: user._id }, req.app.get('secretKey'), { expiresIn: 15 * 60 });
+      const token = jwt.sign({ id: user._id }, req.app.get('secretKey'), { expiresIn: 24*60*60 });
       sendMailToUser(user, token, RESETPSW).catch(console.error).then(res.json({ message: "Please check your mail to reset password" }))
     } else {
       res.json({ message: "Not found user by that email." })
@@ -29,7 +29,7 @@ router.post("/verify", (req, res) => {
   console.log(req.body.email);
   User.findOne({ email: req.body.email }, (err, user) => {
     if(user){
-      const token = jwt.sign({ email: req.body.email }, req.app.get('secretKey'), { expiresIn: 15 * 60 });
+      const token = jwt.sign({ email: req.body.email }, req.app.get('secretKey'), { expiresIn: 24*60*60 });
       sendMailToUser(user, token, VERIFY).then(res.json({message:"check your mail ..."})).catch(console.error)
     }
   })

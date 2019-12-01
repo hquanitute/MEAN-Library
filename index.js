@@ -29,9 +29,9 @@ require('./config/passport-setup');
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/auth",authRoutes);
+app.use("/auth",cors(),authRoutes);
 
-app.use(cors({origin:"*"})) // Use this after the variable declaration
+app.use(cors()) // Use this after the variable declaration
 
 // Connect to database
 let count = 0;
@@ -63,7 +63,7 @@ app.use(morgan('dev'));
 let apiRouter = express.Router(); 
 apiRouter.use('/api',mainRouter);
 
-app.use('/', apiRouter);
+app.use('/',cors(), apiRouter);
 app.get('/home', (req,res)=>{
   res.send('home')
 })

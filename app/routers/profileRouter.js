@@ -57,7 +57,7 @@ var Q = require("q");
 // })
 
 router.get('/:user_id', (req, res) => {
-    let data = [];
+    let data = {};
     let penalizes = [];
     let borrowings = [];
     User.findById(req.params.user_id, (err, user) => {
@@ -67,7 +67,7 @@ router.get('/:user_id', (req, res) => {
         }
         return user;
     }).then(user => {
-        data.push({ "user": user });
+        data.user=user;
         Borrowing_card.find({ user_id: req.params.user_id }, (err, borrowing) => {
             if (err) {
             }
@@ -77,7 +77,7 @@ router.get('/:user_id', (req, res) => {
             return borrowings;
             // console.log("1", borrowings);
         }).then(borrowings => {
-            data.push({ "borrowings": borrowings });
+            data.borrowings=borrowings ;
             Penalize.find({ user_id: req.params.user_id }, (err, penalize) => {
                 if (err) {
                 }
@@ -85,7 +85,7 @@ router.get('/:user_id', (req, res) => {
                     penalizes[i] = penalize[i];
                 }
                 return penalizes;
-            }).then(penalizes => { data.push({ "penalizes": penalizes }), res.json(data) });
+            }).then(penalizes => { data.penalizes=penalizes, res.json(data) });
         });
     });
 

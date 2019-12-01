@@ -5,7 +5,8 @@ var router = express.Router();
 router.post("/", (req, res) => {
     const date = new Date();
     let borrowing_card = new Borrowing_card();
-    borrowing_card.book_id = req.body.book_id;
+    let bookId= req.body.book_id
+    borrowing_card.book_id = bookId.toString().split(",");
     borrowing_card.user_id = req.body.user_id;
     borrowing_card.type = req.body.type;
     borrowing_card.status = req.body.status;
@@ -14,7 +15,7 @@ router.post("/", (req, res) => {
         if (err) {
             return res.json({
                 success: false,
-                message: "Khong them borrowing_card duoc"
+                message: err
             });
         }
         return res.json({

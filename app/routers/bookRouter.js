@@ -26,7 +26,7 @@ router.post("/",(req, res) => {
     });
   });
 }).get("/", function (req, res) {
-  Book.find(function (error, books) {
+  Book.find({},{},{limit:5},function (error, books) {
     if (error) {
       return res.send(error);
     }
@@ -83,9 +83,5 @@ router.post("/",(req, res) => {
     // console.log(listID);
   })
 });
-
-router.get('/paginate',(req,res)=>{
-  Book.paginate({},{})
-})
 
 module.exports = router;

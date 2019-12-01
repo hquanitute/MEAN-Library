@@ -31,7 +31,7 @@ app.use(passport.session());
 
 app.use("/auth",authRoutes);
 
-app.use(cors()) // Use this after the variable declaration
+app.use(cors({origin:"*"})) // Use this after the variable declaration
 
 // Connect to database
 let count = 0;

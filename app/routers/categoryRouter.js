@@ -1,6 +1,7 @@
 const express = require('express');
 const Category = require('./../models/category');
 var router = express.Router();
+var checkAuth = require('./../middlewares/jwtCheck');
 
 router.post("/", (req, res) => {
     const date = new Date();
@@ -23,7 +24,7 @@ router.post("/", (req, res) => {
             message: "Them category thanh cong"
         });
     });
-}).get("/", function (req, res) {
+}).get("/", checkAuth(1),function (req, res) {
     Category.find(function (error, categorys) {
         if (error) {
             return res.send(error);

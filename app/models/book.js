@@ -75,5 +75,4 @@ bookSchema.pre('save', function(next){
     return next();
 });
 
-bookSchema.plugin(mongoosePaginate);
 module.exports = mongoose.model("Book", bookSchema);

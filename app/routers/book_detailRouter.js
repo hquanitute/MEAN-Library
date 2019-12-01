@@ -26,6 +26,7 @@ router.post("/", (req, res) => {
     });
 }).get("/", function (req, res) {
     Book_detail.find()
+    .populate('lsCategories')
     .populate('publisher')
     .populate('language')
     .populate('book_location')
@@ -91,6 +92,7 @@ router.post("/", (req, res) => {
     });
 }).get("/book/:id",(req,res) =>{
     Book_detail.find({book:req.params.id})
+    .populate('lsCategories')
     .populate('publisher')
     .populate('language')
     .populate('book_location')

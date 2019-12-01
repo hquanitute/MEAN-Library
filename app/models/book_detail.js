@@ -10,7 +10,7 @@ const Book = require('./book');
 const categorySchema = require('./category');
 
 const book_detailSchema = new Schema({
-    lsCategories:[{type: mongoose.Schema.Types.ObjectId, ref: Category},],
+    lsCategories:[{type: mongoose.Schema.Types.ObjectId, ref: Category}],
     publisher:{type: mongoose.Schema.Types.ObjectId, ref: Publisher},
     language:{type: mongoose.Schema.Types.ObjectId, ref: Language},
     book_location:{type: mongoose.Schema.Types.ObjectId, ref: BookLocation},

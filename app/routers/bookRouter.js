@@ -1,6 +1,7 @@
 const express = require('express');
 const Book = require('./../models/book');
 const Book_detail = require('./../models/book_detail');
+const option = require('./../middlewares/queryOption')
 
 var router = express.Router();
 const jwtCheck = require('./../middlewares/jwtCheck');
@@ -25,8 +26,8 @@ router.post("/",(req, res) => {
       message: "Them sach thanh cong"
     });
   });
-}).get("/", function (req, res) {
-  Book.find(function (error, books) {
+}).get("/",option(), function (req, res) {
+  Book.find({},{},req.option,function (error, books) {
     if (error) {
       return res.send(error);
     }

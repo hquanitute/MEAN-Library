@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     borrowing_card.type = req.body.type;
     borrowing_card.status = req.body.status;
     borrowing_card.editor_id = req.body.editor_id;
-    Borrowing_card.create(borrowing_card).then((err,object)=>{
+    Borrowing_card.create(borrowing_card).then((object,err)=>{
         if(err){
             return res.json({
                 success: false,

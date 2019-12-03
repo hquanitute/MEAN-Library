@@ -7,7 +7,7 @@ router.post("/", (req, res) => {
     let publisher = new Publisher();
     publisher.name = req.body.name;
     publisher.note = req.body.note;
-    publisher.save((err) => {
+    Publisher.create(publisher).then((publisher,err)=>{
         if (err) {
             return res.json({
                 success: false,
@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
             success: true,
             message: "Them publisher thanh cong"
         });
-    });
+    })
 }).get("/", option(),function (req, res) {
     Publisher.find({},{},req.option,function (error, publisher) {
         if (error) {

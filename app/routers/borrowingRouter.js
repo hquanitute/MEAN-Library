@@ -22,7 +22,8 @@ router.post("/", (req, res) => {
         if(object){
             return res.json({
                 success: true,
-                message: "Them borrowing_card thanh cong"
+                message: "Them borrowing_card thanh cong",
+                phieumuon:object
             });
         }
     })

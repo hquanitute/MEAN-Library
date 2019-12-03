@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
     book_detail.book_location = req.body.book_location;
     book_detail.author = req.body.author;
     book_detail.book = req.body.book;
-    book_detail.save((err) => {
+    Book_detail.create(book_detail).then((book_detail,err)=>{
         if (err) {
             return res.json({
                 success: false,
@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
             success: true,
             message: "Them book_detail thanh cong"
         });
-    });
+    })
 }).get("/",option(), function (req, res) {
     Book_detail.find({},{},req.option,{})
     .populate('lsCategories')

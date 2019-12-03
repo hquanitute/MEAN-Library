@@ -6,7 +6,7 @@ const option = require('./../middlewares/queryOption')
 router.post("/", (req, res) => {
     let author = new Author();
     author.name = req.body.name;
-    author.save((err) => {
+    Author.create(author).then((author,err)=>{
         if (err) {
             return res.json({
                 success: false,
@@ -17,7 +17,7 @@ router.post("/", (req, res) => {
             success: true,
             message: "Them author thanh cong"
         });
-    });
+    })
 }).get("/",option(), function (req, res) {
     Author.find({},{},req.option,function (error, author) {
         if (error) {

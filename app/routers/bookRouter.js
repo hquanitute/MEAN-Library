@@ -13,8 +13,7 @@ router.post("/",(req, res) => {
   book.thumbnail = req.body.thumbnail;
   book.number_page = req.body.number_page;
   book.amount_book = req.body.amount_book;
-  
-  book.save((err) => {
+  Book.create(book).then((book,err)=>{
     if (err) {
       return res.json({
         success: false,
@@ -25,7 +24,7 @@ router.post("/",(req, res) => {
       success: true,
       message: "Them sach thanh cong"
     });
-  });
+  })
 }).get("/",option(), function (req, res) {
   Book.find({},{},req.option,function (error, books) {
     if (error) {

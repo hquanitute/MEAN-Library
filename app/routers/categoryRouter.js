@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
     category.status = true;
     category.create_date = date;
     category.update_date = date;
-    category.save((err) => {
+    Category.create(category).then((category,err)=>{
         if (err) {
             return res.json({
                 success: false,
@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
             success: true,
             message: "Them category thanh cong"
         });
-    });
+    })
 }).get("/", checkAuth(1),option(),function (req, res) {
     Category.find({},{},req.option,function (error, categorys) {
         if (error) {

@@ -8,7 +8,7 @@ router.post("/", (req, res) => {
     penalize.reason = req.body.reason;
     penalize.user_id = req.body.user_id;
     penalize.editor_id = req.body.editor_id;
-    penalize.save((err) => {
+    Penalize.create(penalize).then((penalize,err)=>{
         if (err) {
             return res.json({
                 success: false,
@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
             success: true,
             message: "Them penalize thanh cong"
         });
-    });
+    })
 }).get("/", option(),function (req, res) {
     Penalize.find({},{},req.option,function (error, penalize) {
         if (error) {

@@ -11,7 +11,7 @@ router.post("/", (req, res) => {
     user.role = req.body.role;
     user.phone = req.body.phone;
     user.email = req.body.email;
-    user.save((err) => {
+    User.create(user).then((user,err)=>{
         if (err) {
             return res.json({
                 success: false,
@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
             success: true,
             message: "Them user thanh cong"
         });
-    });
+    })
 }).get("/", option(),function (req, res) {
     User.find({},{},req.option,function (error, user) {
         if (error) {

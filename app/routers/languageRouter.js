@@ -7,7 +7,7 @@ router.post("/", (req, res) => {
     let language = new Language();
     language.name = req.body.name;
     language.note = req.body.note;
-    language.save((err) => {
+    Language.create(language).then((language,err)=>{
         if (err) {
             return res.json({
                 success: false,
@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
             success: true,
             message: "Them language thanh cong"
         });
-    });
+    })
 }).get("/",option(), function (req, res) {
     Language.find({},{},req.option,function (error, language) {
         if (error) {

@@ -7,7 +7,7 @@ router.post("/",(req, res) => {
   let bookLocation = new BookLocation();
   bookLocation.name = req.body.name;
   bookLocation.description = req.body.description;
-  bookLocation.save((err) => {
+  BookLocation.create(bookLocation).then((bookLocation,err)=>{
     if (err) {
       return res.json({
         success: false,
@@ -18,7 +18,7 @@ router.post("/",(req, res) => {
       success: true,
       message: "Them vi tri sach thanh cong"
     });
-  });
+  })
 }).get("/",option(),function (req, res) {
     BookLocation.find({},{},req.option,function (error, booklocations) {
     if (error) {

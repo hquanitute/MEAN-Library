@@ -1,6 +1,7 @@
 const express = require('express');
 const BookLocation = require('./../models/book_location');
 var router = express.Router();
+const option = require('./../middlewares/queryOption');
 
 router.post("/",(req, res) => {
   let bookLocation = new BookLocation();
@@ -18,8 +19,8 @@ router.post("/",(req, res) => {
       message: "Them vi tri sach thanh cong"
     });
   });
-}).get("/",function (req, res) {
-    BookLocation.find(function (error, booklocations) {
+}).get("/",option(),function (req, res) {
+    BookLocation.find({},{},req.option,function (error, booklocations) {
     if (error) {
       return res.send(error);
     }

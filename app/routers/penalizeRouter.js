@@ -1,6 +1,7 @@
 const express = require('express');
 const Penalize = require('./../models/penalize');
 var router = express.Router();
+const option = require('./../middlewares/queryOption');
 
 router.post("/", (req, res) => {
     let penalize = new Penalize();
@@ -19,8 +20,8 @@ router.post("/", (req, res) => {
             message: "Them penalize thanh cong"
         });
     });
-}).get("/", function (req, res) {
-    Penalize.find(function (error, penalize) {
+}).get("/", option(),function (req, res) {
+    Penalize.find({},{},req.option,function (error, penalize) {
         if (error) {
             return res.send(error);
         }

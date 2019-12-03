@@ -1,6 +1,7 @@
 const express = require('express');
 const Language = require('./../models/language');
 var router = express.Router();
+const option = require('./../middlewares/queryOption');
 
 router.post("/", (req, res) => {
     let language = new Language();
@@ -18,8 +19,8 @@ router.post("/", (req, res) => {
             message: "Them language thanh cong"
         });
     });
-}).get("/", function (req, res) {
-    Language.find(function (error, language) {
+}).get("/",option(), function (req, res) {
+    Language.find({},{},req.option,function (error, language) {
         if (error) {
             return res.send(error);
         }

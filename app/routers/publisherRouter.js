@@ -1,6 +1,7 @@
 const express = require('express');
 const Publisher = require('./../models/publisher');
 var router = express.Router();
+const option = require('./../middlewares/queryOption')
 
 router.post("/", (req, res) => {
     let publisher = new Publisher();
@@ -18,8 +19,8 @@ router.post("/", (req, res) => {
             message: "Them publisher thanh cong"
         });
     });
-}).get("/", function (req, res) {
-    Publisher.find(function (error, publisher) {
+}).get("/", option(),function (req, res) {
+    Publisher.find({},{},req.option,function (error, publisher) {
         if (error) {
             return res.send(error);
         }

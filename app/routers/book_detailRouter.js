@@ -3,6 +3,7 @@ const Book_detail = require('./../models/book_detail');
 const Book =require('./../models/book');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId; 
+const option = require('./../middlewares/queryOption')
 
 router.post("/", (req, res) => {
     let book_detail = new Book_detail();
@@ -24,8 +25,8 @@ router.post("/", (req, res) => {
             message: "Them book_detail thanh cong"
         });
     });
-}).get("/", function (req, res) {
-    Book_detail.find()
+}).get("/",option(), function (req, res) {
+    Book_detail.find({},{},req.option,{})
     .populate('lsCategories')
     .populate('publisher')
     .populate('language')

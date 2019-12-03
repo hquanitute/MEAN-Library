@@ -1,6 +1,7 @@
 const express = require('express');
 const Borrowing_card = require('./../models/borrowing-card-detail');
 var router = express.Router();
+const option = require('./../middlewares/queryOption')
 
 router.post("/", (req, res) => {
     const date = new Date();
@@ -23,8 +24,8 @@ router.post("/", (req, res) => {
             message: "Them borrowing_card thanh cong"
         });
     });
-}).get("/", function (req, res) {
-    Borrowing_card.find(function (error, borrowing_cards) {
+}).get("/",option(), function (req, res) {
+    Borrowing_card.find({},{},req.option,function (error, borrowing_cards) {
         if (error) {
             return res.send(error);
         }

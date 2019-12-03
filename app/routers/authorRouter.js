@@ -1,6 +1,7 @@
 const express = require('express');
 const Author = require('./../models/author');
 var router = express.Router();
+const option = require('./../middlewares/queryOption')
 
 router.post("/", (req, res) => {
     let author = new Author();
@@ -17,8 +18,8 @@ router.post("/", (req, res) => {
             message: "Them author thanh cong"
         });
     });
-}).get("/", function (req, res) {
-    Author.find(function (error, author) {
+}).get("/",option(), function (req, res) {
+    Author.find({},{},req.option,function (error, author) {
         if (error) {
             return res.send(error);
         }

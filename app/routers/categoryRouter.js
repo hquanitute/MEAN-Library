@@ -2,6 +2,7 @@ const express = require('express');
 const Category = require('./../models/category');
 var router = express.Router();
 var checkAuth = require('./../middlewares/jwtCheck');
+const option = require('./../middlewares/queryOption');
 
 router.post("/", (req, res) => {
     const date = new Date();
@@ -24,8 +25,8 @@ router.post("/", (req, res) => {
             message: "Them category thanh cong"
         });
     });
-}).get("/", checkAuth(1),function (req, res) {
-    Category.find(function (error, categorys) {
+}).get("/", checkAuth(1),option(),function (req, res) {
+    Category.find({},{},req.option,function (error, categorys) {
         if (error) {
             return res.send(error);
         }

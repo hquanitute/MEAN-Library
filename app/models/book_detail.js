@@ -6,10 +6,26 @@ const Language = require('./language');
 const BookLocation = require('./book_location');
 const Author = require('./author');
 const Book = require('./book');
-
+const Review = require('./review');
 const categorySchema = require('./category');
+const User= require('./user');
+
+const reviewSchema = new Schema({
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:User
+    },
+    date:{
+        type:Date,
+        default:Date.now
+    },
+    comment:{
+        type:String
+    }
+})
 
 const book_detailSchema = new Schema({
+    reviews:[reviewSchema],
     lsCategories:[{type: mongoose.Schema.Types.ObjectId, ref: Category}],
     publisher:{type: mongoose.Schema.Types.ObjectId, ref: Publisher},
     language:{type: mongoose.Schema.Types.ObjectId, ref: Language},

@@ -1,6 +1,6 @@
 const express = require('express');
 const Book_detail = require('./../models/book_detail');
-const Book =require('./../models/book');
+const Review =require('./../models/review');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId; 
 const option = require('./../middlewares/queryOption')
@@ -26,7 +26,8 @@ router.post("/", (req, res) => {
         });
     })
 }).get("/",option(), function (req, res) {
-    Book_detail.find({},{},req.option,{})
+    Book_detail.find({},{},req.option)
+    .populate('reviews')
     .populate('lsCategories')
     .populate('publisher')
     .populate('language')
@@ -105,6 +106,33 @@ router.post("/", (req, res) => {
         }
         return res.json({"content":book_details});
     });
+}).post("/comment",(req,res)=>{
+    Book_detail.findById((req.body.book_detail_id), (err, book_detail) => {
+        if(err){
+            return res.json({
+                success:false,
+                message:"Loi post comment"
+            });
+        }
+        if(book_detail){
+            
+
+            book_detail.reviews.push(new Review({
+                comment:req.body.body,
+                user:req.body.user}))
+            book_detail.save();
+            return res.json({
+                success:true,
+                message:"Comment thanh cong"
+            })
+        } 
+        else{
+            return res.json({
+                success:false,
+                message:"Book Detail not found"
+            })
+        }
+    })
 });
 
 module.exports = router;

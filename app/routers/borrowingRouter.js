@@ -12,18 +12,21 @@ router.post("/", (req, res) => {
     borrowing_card.type = req.body.type;
     borrowing_card.status = req.body.status;
     borrowing_card.editor_id = req.body.editor_id;
-    borrowing_card.save((err) => {
-        if (err) {
+    Borrowing_card.create(borrowing_card).then((err,object)=>{
+        if(err){
             return res.json({
                 success: false,
                 message: err
             });
         }
-        return res.json({
-            success: true,
-            message: "Them borrowing_card thanh cong"
-        });
-    });
+        if(object){
+            return res.json({
+                success: true,
+                message: "Them borrowing_card thanh cong"
+            });
+        }
+    })
+    
 }).get("/",option(), function (req, res) {
     Borrowing_card.find({},{},req.option,function (error, borrowing_cards) {
         if (error) {

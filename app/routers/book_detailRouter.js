@@ -27,7 +27,6 @@ router.post("/", (req, res) => {
     })
 }).get("/",option(), function (req, res) {
     Book_detail.find({},{},req.option)
-    .populate('reviews')
     .populate('lsCategories')
     .populate('publisher')
     .populate('language')
@@ -94,6 +93,14 @@ router.post("/", (req, res) => {
     });
 }).get("/book/:id",(req,res) =>{
     Book_detail.find({book:req.params.id})
+    .populate({
+        path: 'reviews', 
+        model: 'Review',
+        populate: {
+          path: 'user',
+          model: 'User'
+        }
+      })
     .populate('lsCategories')
     .populate('publisher')
     .populate('language')
@@ -102,7 +109,10 @@ router.post("/", (req, res) => {
     .populate('book')
     .exec((err,book_details)=>{
         if (err) {
-            console.log(err)
+            return res.json({
+                success:false,
+                message:err
+            })
         }
         return res.json({"content":book_details});
     });
@@ -118,7 +128,7 @@ router.post("/", (req, res) => {
             
 
             book_detail.reviews.push(new Review({
-                comment:req.body.body,
+                comment:req.body.comment,
                 user:req.body.user}))
             book_detail.save();
             return res.json({

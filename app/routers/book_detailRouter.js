@@ -94,20 +94,13 @@ router.post("/", (req, res) => {
     });
 }).get("/book/:id",(req,res) =>{
     Book_detail.find({book:req.params.id})
-    .populate({
-        path: 'reviews', 
-        model: 'Review',
-        populate: {
-          path: 'user',
-          model: 'User'
-        }
-      })
     .populate('lsCategories')
     .populate('publisher')
     .populate('language')
     .populate('book_location')
     .populate('author')
     .populate('book')
+    .populate("reviews.user")
     .exec((err,book_details)=>{
         if (err) {
             return res.json({

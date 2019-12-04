@@ -2,6 +2,9 @@ const express = require('express');
 const User = require('./../models/user');
 var router = express.Router();
 const option = require('./../middlewares/queryOption');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+let salt = bcrypt.genSaltSync(10);
 
 router.post("/", (req, res) => {
     let user = new User();
@@ -84,6 +87,19 @@ router.post("/", (req, res) => {
             message: "Da xoa thanh cong user"
         })
     });
+}).put("/updatepassword/:user_id",(req,res)=>{
+    User.findById((req.params.user_id), (err, user) => {
+        user.password=bcrypt.hashSync(req.body.password, salt)
+        user.save((err) => {
+            if (err) {
+                return res.send(err);
+            }
+            return res.json({
+                success: true,
+                message: "Da cap nhap user"
+            })
+        });
+    })
 });
 
 module.exports = router;

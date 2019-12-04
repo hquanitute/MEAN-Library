@@ -33,6 +33,7 @@ router.post("/", (req, res) => {
     .populate('book_location')
     .populate('author')
     .populate('book')
+    .populate("reviews.user")
     .exec((err,book_details)=>{
         if (err) {
             console.log(err)

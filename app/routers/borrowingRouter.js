@@ -2,6 +2,7 @@ const express = require('express');
 const Borrowing_card = require('./../models/borrowing-card-detail');
 var router = express.Router();
 const option = require('./../middlewares/queryOption')
+const Book = require('./../models/book');
 
 router.post("/", (req, res) => {
     const date = new Date();
@@ -20,6 +21,12 @@ router.post("/", (req, res) => {
             });
         }
         if(object){
+            object.book_id.map(bookId=>{
+                Book.findById(bookId,(err,book)=>{
+                    book.amount_book-=1;
+                    book.save();
+                })
+            })
             return res.json({
                 success: true,
                 message: "Them borrowing_card thanh cong",

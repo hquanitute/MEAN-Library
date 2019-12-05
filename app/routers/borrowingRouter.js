@@ -43,7 +43,9 @@ router.post("/", (req, res) => {
         res.json({"content":borrowing_cards});
     });
 }).get('/:borrowing_card_id', (req, res) => {
-    Borrowing_card.findById(req.params.borrowing_card_id, (err, borrowing_card) => {
+    Borrowing_card.findById(req.params.borrowing_card_id)
+    .populate('book_id')
+    .exec((err,borrowing_card)=>{
         if (err) {
             return res.send(err);
         }

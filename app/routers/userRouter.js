@@ -67,13 +67,22 @@ router.post("/", (req, res) => {
             user.register_code = req.body.register_code;
         }
         user.update_date = new Date();
-        user.save((err) => {
+        user.save((err,user) => {
             if (err) {
-                return res.send(err);
+                return res.json({
+                    success: false,
+                    message:err
+                })
             }
-            res.json({
-                success: true,
-                message: "Da cap nhap user"
+            if(user){
+                return res.json({
+                    success: true,
+                    data: user
+                })
+            }
+            return res.json({
+                success: false,
+                message:"Loi ko xac dinh"
             })
         });
     })

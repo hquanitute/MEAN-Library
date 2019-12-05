@@ -10,7 +10,7 @@ let salt = bcrypt.genSaltSync(10);
 router.post('/registry', (req, res) => {
   User.create({ username: req.body.username, password: bcrypt.hashSync(req.body.password, salt) }, function (err, result) {
     if (err)
-      next(err);
+      res.json({status:"fail",message:err});
     else
       res.json({ status: "success", message: "User added successfully!!!", data: null });
 
